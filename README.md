@@ -2,10 +2,8 @@
 
 > 「语音输入 → 本地检索 → 大模型推理 → 语音输出」全链路离线闭环，通信、调度、节点运行时全部自研。
 
-这是 [Caden-1224/VoxOrchestra](https://github.com/Caden-1224/VoxOrchestra) 面向
-**SpacemiT K1（riscv64）/ Bianbu Linux** 的适配版。仓库已合入完整上游源码，
-并提供 K1 原生构建、六进程启停、网关 smoke test 和持续集成，不再是只有脚本的
-适配骨架。
+这是面向 **SpacemiT K1（riscv64）/ Bianbu Linux** 的端侧离线语音交互工程，
+提供完整 C++17 源码、K1 原生构建、六进程启停、网关 smoke test 和持续集成。
 
 ## K1 版本状态
 
@@ -36,7 +34,7 @@ deploy/k1/stop.sh
 依赖环境，再执行构建。
 
 完整说明、环境变量与验收边界见 [K1 部署文档](docs/k1-deployment.md)，
-上游来源与许可证说明见 [UPSTREAM.md](UPSTREAM.md)。
+许可信息见 [LICENSE](LICENSE)。
 
 ## 项目简介
 
