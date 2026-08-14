@@ -1,0 +1,33 @@
+name: portable-build
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v5
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential cmake pkg-config libzmq3-dev cppzmq-dev nlohmann-json3-dev python3
+      - name: Check shell syntax
+        run: |
+          bash -n deploy/k1/build.sh
+          bash -n deploy/k1/bootstrap_deps.sh
+          bash -n deploy/k1/start.sh
+          bash -n deploy/k1/stop.sh
+          bash -n deploy/k1/run_smoke.sh
+          bash -n tests/integration/k1_lifecycle_test.sh
+      - name: Validate JSON
+        run: python3 -m json.tool config/k1/session.json >/dev/null
+      - name: Build and run the complete test suite
+        env:
+          VOXORCHESTRA_ALLOW_NON_RISCV: "1"
+          VOXORCHESTRA_BUILD_DIR: "${{ github.workspace }}/build-ci"
+        run: deploy/k1/build.sh

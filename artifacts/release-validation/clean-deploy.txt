@@ -1,0 +1,26 @@
+v0.1.0 候选干净导出记录
+
+导出方式:
+  git archive --format=tar HEAD | tar --touch -xf - -C <clean-dir>
+  test ! -e <clean-dir>/.git
+
+配置:
+  cmake -S <clean-dir> -B <clean-dir>/build-clean -DCMAKE_BUILD_TYPE=Release
+  结果: exit 0
+  VOXORCHESTRA_ENABLE_HARDWARE_BACKENDS:BOOL=OFF
+
+构建:
+  cmake --build <clean-dir>/build-clean -j4
+  结果: exit 0，所有目标构建完成
+  备注: 编译器报告既有的 zmq::poll deprecated 与测试 chdir 返回值警告
+
+测试:
+  ctest --test-dir <clean-dir>/build-clean --output-on-failure
+  结果: 45/45，0 failed，47.63 s
+
+链接审计:
+  bash <clean-dir>/scripts/check_no_hw_deps.sh <clean-dir>/build-clean
+  结果: edge_gateway、unit_manager、session_node、echo_node、asr_node、
+        rag_node、llm_node、tts_node、voice_cli 均无硬件依赖
+
+导出目录不记录绝对主机路径，构建目录与 Git 元数据均不进入发布包。

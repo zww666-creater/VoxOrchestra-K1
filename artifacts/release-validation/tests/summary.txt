@@ -1,0 +1,24 @@
+v0.1.0 候选测试摘要
+
+WSL 当前工作树基线:
+  cmake --build build-wsl -j4: exit 0
+  ctest --test-dir build-wsl --output-on-failure: 45/45, 0 failed, 47.61 s
+
+无 Git 元数据的 Release 导出:
+  configure/build: exit 0
+  CTest: 45/45, 0 failed, 47.63 s
+  默认硬件 Backend: OFF
+  九个应用硬件依赖扫描: 0 命中
+
+TaishanPi 部署子集（人工复核）:
+  ctest --test-dir build-wsl --output-on-failure -R taishanpi3m_
+  结果: 11/11, 0 failed, 12.53 s
+
+真机发布入口:
+  部署预检: 通过
+  真实 setup: ack, work_id=w-0
+  固定 WAV: ack, route=l2, token_count=34, pcm_frames=599, 丢弃=0
+  输出: RIFF PCM, 16 bit, mono, 16000 Hz
+  停止: 六进程与 PID 文件无残留
+
+自动化 Fake 测试只证明协议与编排行为；全真实判定来自真机证据。

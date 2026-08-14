@@ -1,0 +1,34 @@
+v0.1.0 候选板端部署摘要
+
+环境:
+  泰山派 3M / RK3576 / 4 GB
+  Ubuntu 24.04.4 / Linux 6.1.99
+  RKNPU 0.9.8 / RKLLM Runtime 1.2.0
+
+部署:
+  候选 start/check/stop 三个脚本逐文件同步到临时目录
+  板端部署根目录无 Git 元数据
+  启动前按精确进程名 pkill -9 六进程
+  部署预检通过，setup 返回 ack
+
+固定 WAV 请求:
+  type=ack, route=l2, token_count=34
+  pcm_frames=599, text_queue_peak=2, pcm_queue_peak=3
+  dropped_sentences=0, dropped_pcm_frames=0
+  输出 WAV: RIFF PCM, 16 bit, mono, 16000 Hz
+  输出 SHA256: 48a87dfefb4c8e0729c5d83013a7bf4f7f773372d2343c85247aa83530906478
+
+请求后 RSS:
+  ASR 133472 KB
+  LLM 1063520 KB
+  TTS 383228 KB
+
+日志扫描:
+  六个发布日志中 Fake/Mock 运行标记 0
+
+停止:
+  stop.sh 返回成功
+  六进程 0，PID 文件 0
+  停止后温区读数 33.307–35.153 °C
+
+不记录板卡地址、绝对用户路径、生成文本或原始音频。

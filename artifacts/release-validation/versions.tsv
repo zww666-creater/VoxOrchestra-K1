@@ -1,0 +1,18 @@
+类别	组件	版本或构建	SHA256	状态
+board	泰山派 3M	RK3576 / 4 GB / 64 GB	-	真机
+image	Ubuntu	24.04.4 LTS / BSP 2026-07-04	-	官方成品镜像
+kernel	Linux	6.1.99	-	真机
+driver	RKNPU	0.9.8 20240828	-	真机已加载
+runtime	RKLLM Runtime	1.2.0 build f8ca3ae8	4a23f107cd82481670beba3d0fcf9cbdb767793554df90f2060ed0de4cb000ea	外部动态库
+model	DeepSeek-R1-Distill-Qwen-1.5B W4A16 RK3576	RKLLM	5f163f25a548803b6ccbf9d4cb477e52f1ee9319ea44630ab70812314f6c5437	外部模型
+runtime	sherpa-onnx C API	板端构建	b88dba77698b6394fe2e5c68ce478b3e46ee5e31fe867ed8fbff2388dd7dfba6	外部动态库
+runtime	ONNX Runtime	1.17.1 aarch64	89abc6da8d7ac84e5270349fe8a44ee7469d9a958797eed004f1a3f5c7df21d4	外部动态库
+model	ASR encoder int8	Zipformer 2023-02-16	db6f51551762e40e549166fe041ea3e45464370b595e9ad23f06478ec3794fbb	外部模型
+model	ASR decoder int8	Zipformer 2023-02-16	4b618d383af304cfae281dbf0a53e8bf442c2f0502256cd5694bd6567ebdd834	外部模型
+model	ASR joiner int8	Zipformer 2023-02-16	bdda356d6f9b8c2d7cee9ee0e26075fa537490f7fd06520be408d287073667b9	外部模型
+model	ASR tokens.txt	Zipformer 2023-02-16	cba59a352b6f0b99c36a7b4ea7a6a210d2270cb3e5b5d8556d98277213d5f709	外部模型
+model	ASR bpe.model	Zipformer 2023-02-16	bcae393dbc5611be5ffa4c7ae0841558978a5a4f484008cb9dff3a2cc97ebe01	外部模型
+model	single_speaker_fast.bin	SummerTTS vits-based	87b774813258a3636b3f1d9adddd3652ede503b4e8f4eb3c39065cba2a4951c4	外部模型
+dependency	ZeroMQ	4.3.4 x86 / 4.3.5 board	-	系统包
+dependency	nlohmann-json	3.10.5 bundled / 3.11.3 board	-	MIT 单头文件/系统包
+dependency	ALSA	1.2.11 board	-	系统动态库

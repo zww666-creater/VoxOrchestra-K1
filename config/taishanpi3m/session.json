@@ -1,0 +1,34 @@
+{
+  "router": {
+    "l0_keywords": ["停止", "取消", "暂停", "闭嘴", "stop", "cancel", "quit"],
+    "direct_threshold": 4.5,
+    "context_threshold": 2.0,
+    "top_k": 2
+  },
+  "knowledge": "data/knowledge/knowledge.jsonl",
+  "queues": {
+    "text_capacity": 8,
+    "pcm_capacity": 32,
+    "push_timeout_ms": 50
+  },
+  "output_dir": "session-out",
+  "stage_delay_ms": 0,
+  "asr": {
+    "backend": "sherpa_onnx",
+    "model": "models/sherpa-zipformer-bilingual-zh-en-2023-02-16",
+    "num_threads": 4
+  },
+  "llm": {
+    "backend": "rkllm",
+    "model": "models/DeepSeek-R1-Distill-Qwen-1.5B_w4a16_RK3576.rkllm",
+    "max_new_tokens": 300,
+    "max_context_len": 256
+  },
+  "tts": {
+    "backend": "summertts",
+    "model": "models/single_speaker_fast.bin",
+    "length_scale": 1.0
+  },
+  "tts_min_duration_ms": 1000,
+  "max_run_ms": 180000
+}
